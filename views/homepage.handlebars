@@ -1,6 +1,8 @@
 <main>
+    {{#each posts}}
 <div class="post">
-    <h2 class="post-title">Home</h2>
-    <p class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente impedit magni necessitatibus velit sed, nisi numquam beatae maiores illum iste modi inventore maxime sequi, fugit voluptatibus, placeat tenetur omnis aspernatur? Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sequi neque recusandae sint asperiores at architecto animi vitae quasi illo rerum porro, unde minima enim iusto beatae accusamus voluptas earum!</p>
+    <h2 class="post-title">{{title}}</h2>
+    <p class="content">{{content}}</p>
 </div>
+    {{/each}}
 </main>
