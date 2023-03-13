@@ -10,7 +10,7 @@ header {
     /* display: flex; */
     flex-wrap: wrap;
     background-color: black;
-    height: 115px;
+    height: 125px;
 }
 li {
     color: white;
