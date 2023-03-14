@@ -18,15 +18,15 @@ Post.init (
         content: {
             type: DataTypes.STRING,
             allowNull: false
-        },
+        }
     },
         {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             freezeTableName: true,
             underscored: true,
             modelName: 'post',
-          },
+          }
 );
 
 

@@ -9,6 +9,7 @@ const registerFormHandler = async (event) => {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
+            
         }); console.log(username, password);
 
         if (response.ok) {

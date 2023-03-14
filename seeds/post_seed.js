@@ -24,7 +24,7 @@ const postData = [
     {
         title: 'My sixth post',
         content: 'This is my sixth post',
-    },
+    }
 ];
 
 const seedPosts = () => Post.bulkCreate(postData);
