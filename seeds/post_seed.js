@@ -1,29 +1,42 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
+const Comment = require('../models/Comment');
 
 const postData = [
     {
+        id: 1,
         title: 'My first post',
-        content: 'This is my first post',
+        post: `This is my first post`,
+        author: 1,
+        date_created: 'March 3, 2023 12:00:00',
     },
     {
+        id: 2,
         title: 'My second post',
-        content: 'This is my second post',
+        post: `This is my second post`,
+        author: 1,
+        date_created: 'March 3, 2023 12:00:00',
     },
     {
+        id: 3,
         title: 'My third post',
-        content: 'This is my third post',
+        post: `This is my third post`,
+        author: 2,
+        date_created: 'March 3, 2023 12:00:00',
     },
     {
+        id: 4,
         title: 'My fourth post',
-        content: 'This is my fourth post',
+        post: `This is my fourth post`,
+        author: 1,
+        date_created: 'March 3, 2023 12:00:00',
     },
     {
+        id: 5,
         title: 'My fifth post',
-        content: 'This is my fifth post',
-    },
-    {
-        title: 'My sixth post',
-        content: 'This is my sixth post',
+        post: `This is my fifth post`,
+        author: 3,
+        date_created: 'March 3, 2023 12:00:00',
     }
 ];
 
