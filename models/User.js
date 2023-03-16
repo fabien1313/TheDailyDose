@@ -45,7 +45,7 @@ User.init(// initialize the User model by calling the init() method on the User 
         timestamps: false, // disable the timestamps
         freezeTableName: true, // disable the pluralization of the table name
         underscored: true, // enable the use of underscores instead of camel-casing
-        modelName: 'user', // set the model name to user
+        modelName: 'User', // set the model name to user
     }
 );
 
