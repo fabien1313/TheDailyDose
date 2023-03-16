@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 	
 });
 
+// DASH page GET routes
 router.get('/dash', withAuth, async (req, res) => {
     console.log('dashboard', req.session)
     try {
@@ -35,6 +36,17 @@ router.get('/dash', withAuth, async (req, res) => {
         
     }
 });
+
+router.get('/newpost',  async (req, res) => {
+    res.render('newpost', {
+        layout: 'main',
+    });
+});
+
+
+
+
+// DASH page GET routes END
 
 
 
