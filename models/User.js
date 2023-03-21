@@ -31,11 +31,11 @@ User.init(// initialize the User model by calling the init() method on the User 
     },
     {
         hooks: {// define the hooks object to run the beforeCreate() method before a new user is created
-            beforeCreate: async (newUserData) => {// beforeCreate() is a sequelize hook that is used to hash the password before it is created
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);// hash() is used to hash the password, the first argument is the password to be hashed, the second argument is the number of times the password is hashed
-                return newUserData;// return the newUserData object
+            async beforeCreate (newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
             },
-            beforeUpdate: async (updatedUserData) => {
+            async beforeUpdate (updatedUserData) {
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
             }
