@@ -84,22 +84,34 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 
-router.delete('/:id', withAuth, async (req, res) => {
-	const post_id = req.params.id;
-  
+router.delete('/:id', withAuth, (req, res) => {
 	try {
-	  const post = await Post.findOne({ where: { id: post_id } });
-  
-	  if (!post) {
-		return res.status(404).end();
-	  }
-  
-	  await post.destroy();
-  
-	  res.status(200).end();
-	} catch (error) {
-	  res.status(500).json(error);
+		Post.destroy({
+			where: {
+				id: req.params.id,
+				user_id: req.session.user_id,
+			}
+		})
+
+		if (dbPostData) {
+			res.json(dbPostData);
+			return;
+		}
+
+		res.status(404).json({ message: 'There is no post for this id' });
+
+
+	} catch (e) {
+		console.log(e);
+		res.status(500).json(e);
 	}
-  });
+});
+
+
+
+
+
+
+
 
 module.exports = router;
