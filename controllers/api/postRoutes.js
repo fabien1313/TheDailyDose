@@ -34,15 +34,15 @@ router.get('/:id', (req, res) => {
 			include: [
 				{
 					model: Comment,
-					attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+					attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
 					include: {
 						model: User,
-						attributes: ['username']
+						attributes: ['username', 'user_id']
 					}
 				},
 				{
 					model: User,
-					attributes: ['username']
+					attributes: ['username', 'user_id']
 				}
 			]
 		});
@@ -84,7 +84,6 @@ router.put('/:id', withAuth, (req, res) => {
 
 
 router.delete('/:id', withAuth, (req, res) => {
-	console.log('id', req.params.id);
 	Post.destroy({
 		where: { 
 			id: req.params.id,
