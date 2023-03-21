@@ -1,16 +1,8 @@
 <main>
-    {{!-- {{#each posts}}
-<div class="post">
-    <h2 class="post-title">{{title}} <span class="postedby-date">Posted By: {{User.username}} {{format_date created_at}}</span></h2>
-    <p class="content">{{content}}</p>
-</div>
-    {{/each}} --}}
-   
     {{#each posts}}
     <div class="post">
-        <a id="anchor" href="/post/{{id}}"><h2 class="post-title">{{title}}</a> <span class="postedby-date">Posted By: {{User.username}} {{format_date created_at}}</span></h2>
+        <a class="anchor" href="/post/{{id}}"><h2 class="post-title">{{title}}</a> <span class="postedby-date">Posted By: {{User.username}} {{format_date created_at}}</span></h2>
         <p class="content">{{content}}</p>
     </div>
     {{/each}}
-
 </main>

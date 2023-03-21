@@ -27,53 +27,9 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put('/:id', withAuth, async (req, res) => {
-    try {
-        const commentData = await Comment.update(
-            {
-                comment_content: req.body.comment_content,
-                user_id: req.session.user_id,
-            },
-            {
-                where: {
-                    id: req.params.id,
-                },
-            }
-        );
-
-        if (commentData) {
-            res.status(200).json(commentData);
-            return;
-        }
-
-        res.status(404).json({ message: 'id does not match a comment' });
-        
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
 
 
-router.delete('/:id', withAuth, async (req, res) => {
-    try {
-        const commentData = await Comment.destroy({
-            where: {
-                id: req.params.id,
-                user_id: req.session.user_id,
-            },
-        });
 
-        if (commentData) {
-            res.status(200).json(commentData);
-            return;
-        }
-
-        res.status(404).json({ message: 'id does not match a comment' });
-        
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
 
 
 

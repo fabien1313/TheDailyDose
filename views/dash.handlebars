@@ -1,7 +1,7 @@
 <main>
     {{#each posts}}
     <div class="post">
-        <h2 class="post-title">{{title}} <span class="postedby-date">Posted By: {{User.username}} {{format_date created_at}}</span></h2>
+       <a class="anchor" href="/editpost/{{id}}"><h2 class="post-title">{{title}} <span class="postedby-date">Posted By: {{User.username}} {{format_date created_at}}</span></h2></a>
         <p class="content">{{content}}</p>
     </div>
     {{/each}}
