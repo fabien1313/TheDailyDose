@@ -85,10 +85,10 @@ router.put('/:id', withAuth, (req, res) => {
 
 
 router.delete('/:id', withAuth, async (req, res) => {
-	const postId = req.params.id;
+	const post_id = req.params.id;
   
 	try {
-	  const post = await Post.findOne({ where: { id: postId } });
+	  const post = await Post.findOne({ where: { id: post_id } });
   
 	  if (!post) {
 		return res.status(404).end();
