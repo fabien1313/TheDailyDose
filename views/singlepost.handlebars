@@ -1,0 +1,35 @@
+<main>
+   <div class="post">
+      <h2 class="post-title">{{post.title}} <span class="postedby-date">Posted By: {{post.User.username}} {{format_date
+            post.created_at}}</span></h2>
+      <p class="content">{{post.content}}</p>
+   </div>
+</main>
+
+
+
+<main>
+   {{#each post.Comments}}
+   <div class="comment-card">
+      <h2 class="post-title">Comments</h2>
+      <p class="content">{{comment_content}}</p>
+      <p>-- {{User.username}}, {{format_date created_at}}</p>
+   </div>
+   {{/each}}
+</main>
+
+
+
+
+
+<div id="comment-container">
+   <div id="comment-header"></div>
+   <form id="comment-form">
+      <input type="hidden" name="post_id" value="{{post.id}}">
+      <h2 id="comment-title">Comment</h2>
+      <textarea name="make-a-comment" class="make-a-comment"></textarea>
+      <button type="submit" class="comment-btn-create">Add Comment</button>
+   </form>
+</div>
+
+<script src="../js/comment.js"></script>

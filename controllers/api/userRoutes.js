@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         });
 
         req.session.save(() => {
-            req.session.userId = dbUserData.id;
+            req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
         } console.log('existingUser3')
 
         req.session.save(() => {
-            req.session.userId = existingUser.id;
+            req.session.user_id = existingUser.id;
             req.session.username = existingUser.username;
             req.session.loggedIn = true;
 

@@ -1,12 +1,12 @@
 <main>
     {{#each posts}}
     <div class="post">
-        <h2 class="post-title">{{title}}</h2>
-        <p class="content">{{post}}</p>
+        <h2 class="post-title">{{title}} <span class="postedby-date">Posted By: {{User.username}} {{format_date created_at}}</span></h2>
+        <p class="content">{{content}}</p>
     </div>
     {{/each}}
 </main>
 
 <div id="create-btn-div">
-    <a href=""><button id="create-btn">Create Blog Post</button></a>
+    <a href="/newpost"><button id="create-btn">Create Blog Post</button></a>
 </div>

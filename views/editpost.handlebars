@@ -1,0 +1,21 @@
+<div id="edit-post-container">
+    <div id="edit-post-title">
+        <h1>Edit Post</h1>
+    </div>
+    <form id="edit-post-form">
+        <input type="hidden" name="post_id" value="{{post.id}}">
+
+        <label class="post-labels" id="edit-post-title-name" for="edit-post-title">Title</label>
+        <input type="text" name="edit-post-title" id="edit-post-title-input" value="{{post.title}}">
+
+        <label class="post-labels" id="edit-post-content-input" for="edit-post-content-title">Post</label>
+        <textarea name="edit-post-content-title" id="edit-post-content-input" cols="30"
+            rows="10">{{post.content}}</textarea>
+
+        <input id="submit-btn-edit" type="submit" value="Update">
+        <input id="delete-btn-edit" type="submit" value="Delete">
+    </form>
+</div>
+
+<script src="../js/editpost.js"></script>
+<script src="../js/deletepost.js"></script>

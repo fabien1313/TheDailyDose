@@ -6,12 +6,21 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const dbPostData = await Post.findAll({
-            include: [User],
+            attributes : [ 'id', 'title', 'content', 'created_at' ],
+            include: [
+                {
+                    model: Comment, attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+                    include: { model: User, attributes: ['username']}
+                },
+                {
+                    model: User, attributes: ['username']
+                }
+            ]
             
         });
 
         const posts = dbPostData.map((post) => post.get({ plain: true }));
-        res.render('homepage', { posts })
+        res.render('homepage', { posts, loggedIn: req.session.loggedIn, username: req.session.username });
 
     } catch (err) {
         res.status(500).json(err);
@@ -21,14 +30,24 @@ router.get('/', async (req, res) => {
 
 // DASH page GET routes
 router.get('/dash', withAuth, async (req, res) => {
-    console.log('dashboard', req.session)
     try {
         const dbPostData = await Post.findAll({
-            
+            where: { user_id: req.session.user_id },
+            attributes: ['id', 'title', 'content', 'created_at'],
+            include: [
+                {
+                    model: Comment, attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+                    include: { model: User, attributes: ['username']}
+                },
+                {
+                    model: User, attributes: ['username']
+                }
+            ]
         });
+
         const posts = dbPostData.map((post) => post.get({ plain: true }));
         
-        res.render('dash', { posts });
+        res.render('dash', { posts, username: req.session.username });
 
     } catch (err) {
         console.log('error rendering dashboard')
@@ -37,16 +56,73 @@ router.get('/dash', withAuth, async (req, res) => {
     }
 });
 
+
 router.get('/newpost',  async (req, res) => {
     res.render('newpost', {
         layout: 'main',
     });
 });
 
+router.get('/editpost/:id', async (req, res) => {
+    try {
+        const dbPostData = await Post.findOne({
+            where: { id: req.params.id },
+            attributes: ['id', 'title', 'content', 'created_at'],
+            include: [
+                {
+                    model: Comment, attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+                    include: { model: User, attributes: ['username']}
+                },
+                {
+                    model: User, attributes: ['username']
+                }
+            ],
+        });
 
+        if (dbPostData) {
+            const post = dbPostData.get({ plain: true });
+            res.render('editpost', { post, loggedIn: req.session.loggedIn});
+        }
+
+    } catch (err) {
+        console.log('error rendering post')
+        res.status(500).json(err);
+    }
+});
 
 
 // DASH page GET routes END
+
+
+
+
+router.get('/post/:id', async (req, res) => {
+    try {
+        const dbPostData = await Post.findOne({
+            where: { id: req.params.id },
+            attributes: ['id', 'title', 'content', 'created_at'],
+            include: [
+                {
+                    model: Comment, attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+                    include: { model: User, attributes: ['username']}
+                },
+                {
+                    model: User, attributes: ['username']
+                }
+            ],
+        });
+
+        if (dbPostData) {
+            const post = dbPostData.get({ plain: true });
+            res.render('singlepost', { post, loggedIn: req.session.loggedIn});
+        }
+
+    } catch (err) {
+        console.log('error rendering post')
+        res.status(500).json(err);
+    }
+
+});
 
 
 
