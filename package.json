@@ -31,6 +31,9 @@
     "path": "^0.12.7",
     "sequelize": "^6.29.3"
   },
+  "engines": {
+    "node": "18.14.0"
+  },
   "devDependencies": {
     "nodemon": "^2.0.21"
   }
