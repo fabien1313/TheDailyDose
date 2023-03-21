@@ -61,43 +61,49 @@ router.get('/:id', (req, res) => {
 
 
 router.put('/:id', withAuth, (req, res) => {
-	try {
-		Post.update(
-			{
-				title: req.body.title,
-				content: req.body.content
-			},
-			{
-				where: { id: req.params.id }
-			}
-		)
-
-		if (dbPostData) {
-			const post = dbPostData.get({ plain: true });
-			res.render('editpost', { post, loggedIn: req.session.loggedIn, username: req.session.username });
+	Post.update(
+		{
+			title: req.body.title,
+			content: req.body.content
+		},
+		{
+			where: { id: req.params.id }
 		}
-
-	} catch (err) {
+	)
+	.then(dbPostData => {
+		if (!dbPostData) {
+			res.status(404).json({ message: 'No post found with this id' });
+			return;
+		}
+		res.json(dbPostData);
+	})
+	.catch(err => {
 		console.log(err);
 		res.status(500).json(err);
-	}
+	});
 });
 
 
-router.delete('/:id', withAuth, async (req, res) => {
-	try {
-	  const post_id = req.params.id;
-	  const post = await Post.findOne({ where: { id: post_id } });
-	  if (!post) {
-		return res.status(404).end();
-	  }
-  
-	  await Post.destroy({ where: { id: post_id } });
-	  res.status(200).end();
-	} catch (e) {
-	  res.status(500).json(e);
-	}
-  });
+router.delete('/:id', withAuth, (req, res) => {
+	console.log('id', req.params.id);
+	Post.destroy({
+		where: { 
+			id: req.params.id,
+			user_id: req.session.user_id,
+		 }
+	})
+	.then(dbPostData => {
+		if (!dbPostData) {
+			res.status(404).json({ message: 'No post found with this id' });
+			return;
+		}
+		res.json(dbPostData);
+	})
+	.catch(err => {
+		console.log(err);
+		res.status(500).json(err);
+	});
+});
 
 
 
