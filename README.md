@@ -84,7 +84,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
   ## Usage
   Heroku Deployment: https://dailydose.herokuapp.com/ 
-  
+
   You can initialize the project locally after you install all the packages by running npm start.
 
   You will instantly have access to the homepage. From there any navigation through the navbar will instruct you to login for further access to the website.
@@ -92,6 +92,36 @@ THEN I am able to view comments but I am prompted to log in again before I can a
   Login if you have visited the site before or signup if you are new. You will be taken to the home page where you can can view all of the blogs from all of the users. Under dashboard you can begin writing your own blogs. You can update or delete an existing blog under your dashboard by clicking on the title box.
 
   While on the home page you can comment on posts by clicking directly on the title. Here you can view the user that commented as well as the date the comment was posted.
+
+
+-Home Page
+
+  <img src="public/images/image1.png" width="500" alt="Image of wireframe 1">
+
+
+  -Login (Will be directed to login or Signup)
+
+  <img src="public/images/image2.png" width="500" alt="Image of wireframe 1">
+
+  -Signup
+
+  <img src="public/images/image3.png" width="500" alt="Image of wireframe 1">
+
+  -Dashboard (Once logged in or after Signup)
+
+  <img src="public/images/image4.png" width="500" alt="Image of wireframe 1">
+
+  -Create A post (hit the Create Blog Post button)
+
+  <img src="public/images/image5.png" width="500" alt="Image of wireframe 1">
+
+  -Update/Delete (edit a post by clicking on the title area while viewing your dashboard)
+
+  <img src="public/images/image6.png" width="500" alt="Image of wireframe 1">
+
+  -Comment (Add a comment to a post by clicking directly on the title)
+
+  <img src="public/images/image7.png" width="500" alt="Image of wireframe 1">
   
   <hr>
 
